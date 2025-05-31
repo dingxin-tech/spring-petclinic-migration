@@ -1,0 +1,25 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: tech.dingxin.addNewDependency
+recipeList:
+  - org.openrewrite.maven.RemoveManagedDependency:
+      groupId: com.google.guava
+      artifactId: guava
+  - org.openrewrite.maven.AddManagedDependency:
+      groupId: com.google.guava
+      artifactId: guava
+      version: 33.4.8-jre
+      type: pom
+      scope: import
+      addToRootPom: true
+  - org.openrewrite.maven.AddDependency:
+      groupId: com.google.guava
+      artifactId: guava
+      version: 33.4.8-jre
+  - org.openrewrite.java.spring.AddSpringProperty:
+      property: 11
+      value: 222
+  - com.aliyun.odps.AddAnnotationToMain:
+      property: 11
+      value: 222
+
